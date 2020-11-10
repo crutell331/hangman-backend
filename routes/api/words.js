@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Words = require('../../models/Word')
+const Word = require('../../models/Word');
+
 router.get('/', (req, res) => { res.send("mad words") });
 
-router.get('/api/words/random', (req, resp) => {
-    console.log('got random word');
+router.get('/random', async (req, res) => {
+    const word = await Word.findOne();
+    res.json({ length: word.name.length, slug: word.slug });
 });
-router.get(`/api/words/guess/${slug}`, (req, resp) => {
-    console.log('got random word');
-});
-router.post('/api/words', async (req, resp) => {
+
+router.post('/words', async (req, resp) => {
     const { name } = req.body;
     try {
         // check for duplicate word

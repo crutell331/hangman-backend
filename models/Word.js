@@ -6,7 +6,9 @@ const WordSchema = new mongoose.Schema({
         required: true,
     },
     slug: {
-        type: Number,
+        type: String,
         required: true,
     }
 });
+
+module.exports = Word = mongoose.model("word", WordSchema);
