@@ -17,6 +17,7 @@ router.get('/', async (req, resp) => {
         let word = await Word.findOne({ slug: req.headers.slug });
         const name = word.name.toUpperCase();
         for (let i = 0; i < name.length; i++) {
+            // push index + 1 into array so that the response has the character's number in the word instead of it's index. Makes it a little easier to identify which input to populate the correct guess. Also makes it easier to label input with numbers a User would understand (ex: input #1 instead of input #0)
             name[i] === guess ? indexArray.push(i + 1) : null;
         };
         resp.json(indexArray);
