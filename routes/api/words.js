@@ -10,7 +10,6 @@ router.get('/random', async (req, res) => {
 });
 
 router.get('/', async (req, resp) => {
-    // const { name } = req.body;
     let indexArray = [];
     try {
         const guess = req.query.guess.toUpperCase()
